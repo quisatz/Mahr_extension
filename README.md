@@ -13,7 +13,9 @@ https://raw.githubusercontent.com/quisatz/Mahr_extension/master/demo.bmp
 2. open menu.mpr using Mahr GmbH application.
 
 Alternatively, it is possible to use only the main.bat file with additional parameters. The first parameter concerns the name, e.g. of the detail, the second parameter concerns, e.g., the name of the machine.
+
 main.bat detail321 machine123 
+
 
 
 
