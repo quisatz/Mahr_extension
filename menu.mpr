@@ -1,0 +1,51 @@
+//=============================================================================
+// MarEdit    : Mahr GmbH, (C) 2023
+// File       : Example
+// Date/Time  : 07.11.2023 19:19:37
+// Author     : Administrator
+// Comment    : A script extending the functionality of Mahr GmbH programs. 
+//				It allows you to select the place to save measurement results 
+//				by clicking on the appropriate boxes.
+//=============================================================================
+
+
+PROGRAM Example
+BEGIN		
+
+VAR STRING PART_NAME
+VAR STRING MACHINE_NAME
+
+VAR ARRAY STRING  res_array1[20]
+VAR INT           ret1
+
+VAR ARRAY STRING  res_array2[20]
+VAR INT           ret2
+
+
+USER DIALOG (TITLE="Parts", 
+	FORMAT=[
+	"S4,1@0,0(                                          Choise part name:)=1",
+	"B2,1@0,1(Steel_Cube_141)=100",
+	"B2,1@2,1(R02)=101",
+	"B2,1@4,1(R04)=102",
+	"B2,1@6,1(R94)=103",
+	"B2,1@8,1(R03)=104",
+	"B2,1@0,2(R04)=105"],
+	RESULT=res_array1, TYPE=UD_NONE, RET=ret1, RESULT_ORDER=EXPLICIT_ID, 
+	MODE=MODAL)
+
+
+USER DIALOG (TITLE="Machines", 
+	FORMAT=[
+		"S4,1@0,0(                                          Choise name machine:)=2",
+		"B2,1@0,1(Lathe-01)=325","B2,1@2,1(Lathe-02)=326"], 
+	RESULT=res_array2, TYPE=UD_NONE, RET=ret2, RESULT_ORDER=EXPLICIT_ID, 
+	MODE=MODAL)
+
+
+IF (ret1 == 100) THEN PART_NAME = "Steel_Cube_141" END
+IF (ret2 == 325) THEN MACHINE_NAME = "Lathe-01" END
+
+IF (ret2 == 325) THEN WINEXEC( CMD = "C:/mahr1/main.bat " ,  WAIT = 0 , ARGV = PART_NAME +" " + MACHINE_NAME) END
+
+END
