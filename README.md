@@ -1,4 +1,4 @@
-# PdfFinder
+# Mahr_extension
 
 ## A script extending the functionality of Mahr GmbH programs..
 
